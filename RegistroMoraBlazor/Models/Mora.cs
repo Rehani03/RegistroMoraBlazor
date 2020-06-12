@@ -32,6 +32,7 @@ namespace RegistroMoraBlazor.Models
             moraId = 0;
             fecha = DateTime.Now;
             total = 0;
+            MoraDetalles = new List<MoraDetalle>();
         }
     }
 }

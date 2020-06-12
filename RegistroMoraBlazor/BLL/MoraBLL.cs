@@ -61,7 +61,7 @@ namespace RegistroMoraBlazor.BLL
             try
             {
                 //aqui borro y disminuyo la mora al prestamo
-                foreach (var item in mora.MoraDetalles)
+                foreach (var item in Anterior.MoraDetalles)
                 {
                     var auxPrestamo = contexto.Prestamos.Find(item.prestamoId);
                     if (!mora.MoraDetalles.Exists(d => d.moraDetalleId == item.moraDetalleId))
@@ -144,11 +144,7 @@ namespace RegistroMoraBlazor.BLL
 
             try
             {
-                mora = contexto.Moras.Find(id);
-                if (mora != null)
-                {
-                    mora.MoraDetalles.Count();
-                }
+                mora = contexto.Moras.Where(m => m.moraId == id).Include(d => d.MoraDetalles).FirstOrDefault();
             }
             catch (Exception)
             {
