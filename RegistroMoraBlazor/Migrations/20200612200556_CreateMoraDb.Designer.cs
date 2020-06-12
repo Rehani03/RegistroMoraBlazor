@@ -9,7 +9,7 @@ using RegistroMoraBlazor.DAL;
 namespace RegistroMoraBlazor.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200612194029_CreateMoraDb")]
+    [Migration("20200612200556_CreateMoraDb")]
     partial class CreateMoraDb
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
