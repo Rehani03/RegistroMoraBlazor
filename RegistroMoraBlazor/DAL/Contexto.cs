@@ -11,7 +11,7 @@ namespace RegistroMoraBlazor.DAL
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlite(@"Data Source=c:\Mora_db\MoraDB.db");
+            optionsBuilder.UseSqlite(@"Data Source=DATA\MoraDB.db");
         }
 
         public DbSet<Prestamo> Prestamos { get; set;}
