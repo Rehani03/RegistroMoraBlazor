@@ -49,7 +49,7 @@
                 @*Monto*@
                 <div class="form-group">
                     <label>MONTO:</label>
-                    <InputNumber @bind-Value="prestamo.monto" step="0.2" @onclick="IgualarMontoBalance" class="form-control" />
+                    <InputNumber @bind-Value="prestamo.monto" step="0.2" @onfocusout="IgualarMontoBalance" @onfocusin="IgualarMontoBalance" @onclick="IgualarMontoBalance" class="form-control" />
                     <ValidationMessage For="@(() => prestamo.monto)" />
                 </div>
                 @*Balance*@
