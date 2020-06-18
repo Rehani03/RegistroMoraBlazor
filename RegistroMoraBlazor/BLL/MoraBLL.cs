@@ -32,7 +32,11 @@ namespace RegistroMoraBlazor.BLL
                 {
                     var auxPrestamo = contexto.Prestamos.Find(item.prestamoId);
                     if (auxPrestamo != null)
+                    {
                         auxPrestamo.balance += item.valor;
+                        contexto.Personas.Find(auxPrestamo.personaId).balance += item.valor; //le sumo el valor al balance de persona 
+                    }
+                        
                 }
 
                 contexto.Moras.Add(mora);
@@ -67,7 +71,11 @@ namespace RegistroMoraBlazor.BLL
                     if (!mora.MoraDetalles.Exists(d => d.moraDetalleId == item.moraDetalleId))
                     {
                         if (auxPrestamo != null)
+                        {
                             auxPrestamo.balance -= item.valor;
+                            contexto.Personas.Find(auxPrestamo.personaId).balance -= item.valor;
+                        }
+                           
                         contexto.Entry(item).State = EntityState.Deleted;
                     }
 
@@ -81,7 +89,11 @@ namespace RegistroMoraBlazor.BLL
                     {
                         contexto.Entry(item).State = EntityState.Added;
                         if (auxPrestamo != null)
+                        {
                             auxPrestamo.balance += item.valor;
+                            contexto.Personas.Find(auxPrestamo.personaId).balance += item.valor;
+                        }
+                           
                     }
                     else
                         contexto.Entry(item).State = EntityState.Modified;
@@ -114,7 +126,11 @@ namespace RegistroMoraBlazor.BLL
                 {
                     var prestamo = contexto.Prestamos.Find(item.prestamoId);
                     if (prestamo != null)
+                    {
                         prestamo.balance -= item.valor;
+                        contexto.Personas.Find(prestamo.personaId).balance -= item.valor;
+                    }
+                       
                 }
 
 
