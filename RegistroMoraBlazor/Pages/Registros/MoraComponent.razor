@@ -43,12 +43,17 @@
                         <div class="form-row">
                             <div class="col">
                                 <label>PRESTAMO ID:</label>
-                                <select class="form-control" @bind="prestamoSeleccionado">
+                                <select class="form-control" @bind="prestamoSeleccionado" @onclick="MostrarNombrePersona">
                                    @foreach (var item in listaPrestamo)
                                     {
                                         <option value="@item.prestamoId">@item.prestamoId</option>
                                     }
                                 </select>
+                            </div>
+
+                            <div class="col">
+                                <label>A NOMBRE DE:</label>
+                                <InputText class="form-control" readonly="true" @bind-Value="nombrePersona"/>
                             </div>
 
                             <div class="col">
@@ -120,6 +125,7 @@
 
     public int prestamoSeleccionado { get; set; }
     public decimal valorColocado { get; set; }
+    public string nombrePersona { get; set; }
 
     Mora mora = new Mora();
     List<Prestamo> listaPrestamo = new List<Prestamo>();
@@ -157,6 +163,20 @@
         this.mora = new Mora();
         prestamoSeleccionado = 0;
         valorColocado = 0;
+        nombrePersona = string.Empty;
+        
+    }
+
+    private void MostrarNombrePersona()
+    {
+        string auxNombre = string.Empty;
+
+        var auxPrestamo = PrestamoBLL.Buscar(prestamoSeleccionado);
+        if (auxPrestamo != null)
+        {
+            auxNombre = PersonasBLL.Buscar(auxPrestamo.personaId).nombre;
+            nombrePersona = auxNombre;
+        }
     }
 
     private void AgregarMora()
@@ -183,6 +203,7 @@
             });
             prestamoSeleccionado = 0;
             valorColocado = 0;
+            nombrePersona = string.Empty;
         }
         CalcularTotal();
 
