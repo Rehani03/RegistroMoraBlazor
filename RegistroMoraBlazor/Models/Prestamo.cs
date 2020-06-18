@@ -18,6 +18,9 @@ namespace RegistroMoraBlazor.Models
         [DisplayFormat(DataFormatString = "{0:dd,mm, yyyy}")]
         public DateTime fecha { get; set; }
 
+        [Range(1, 1000000, ErrorMessage = "Debe elegir una persona.")]
+        public int personaId { get; set; }
+
         [Required(ErrorMessage = "El campo concepto no puede estar vacía.")]
         [MinLength(5, ErrorMessage = "El concepto es muy corta.")]
         [MaxLength(40, ErrorMessage = "El concepto debe contener menos de 60 caracteres.")]
@@ -34,6 +37,7 @@ namespace RegistroMoraBlazor.Models
         {
             prestamoId = 0;
             fecha = DateTime.Now;
+            personaId = 0;
             concepto = string.Empty;
             monto = 0;
             balance = 0;

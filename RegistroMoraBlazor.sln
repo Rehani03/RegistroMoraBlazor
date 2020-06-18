@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegistroMoraBlazor", "RegistroMoraBlazor\RegistroMoraBlazor.csproj", "{CA158BCB-9A4B-4961-ACD0-EED629FDD985}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegistroMoraBlazorTests", "RegistroMoraBlazorTests\RegistroMoraBlazorTests.csproj", "{5AB330FF-C39E-49B9-85C5-30590D635574}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RegistroMoraBlazorTests", "RegistroMoraBlazorTests\RegistroMoraBlazorTests.csproj", "{5AB330FF-C39E-49B9-85C5-30590D635574}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -16,5 +16,6 @@ namespace RegistroMoraBlazor.DAL
 
         public DbSet<Prestamo> Prestamos { get; set;}
         public DbSet<Mora> Moras { get; set; }
+        public DbSet<Personas> Personas { get; set; }
     }
 }

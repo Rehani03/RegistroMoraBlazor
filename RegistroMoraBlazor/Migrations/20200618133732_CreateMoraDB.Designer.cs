@@ -9,8 +9,8 @@ using RegistroMoraBlazor.DAL;
 namespace RegistroMoraBlazor.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20200612200556_CreateMoraDb")]
-    partial class CreateMoraDb
+    [Migration("20200618133732_CreateMoraDB")]
+    partial class CreateMoraDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -57,6 +57,42 @@ namespace RegistroMoraBlazor.Migrations
                     b.ToTable("MoraDetalle");
                 });
 
+            modelBuilder.Entity("RegistroMoraBlazor.Models.Personas", b =>
+                {
+                    b.Property<int>("personaId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<decimal>("balance")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("cedula")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("direccion")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(40);
+
+                    b.Property<DateTime>("fecha")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("nombre")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(50);
+
+                    b.Property<string>("telefono")
+                        .IsRequired()
+                        .HasColumnType("TEXT")
+                        .HasMaxLength(10);
+
+                    b.HasKey("personaId");
+
+                    b.ToTable("Personas");
+                });
+
             modelBuilder.Entity("RegistroMoraBlazor.Models.Prestamo", b =>
                 {
                     b.Property<int>("prestamoId")
@@ -76,6 +112,9 @@ namespace RegistroMoraBlazor.Migrations
 
                     b.Property<decimal>("monto")
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("personaId")
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("prestamoId");
 

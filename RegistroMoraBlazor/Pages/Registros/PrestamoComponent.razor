@@ -40,6 +40,18 @@
                     <ValidationMessage For="@(() => prestamo.fecha)" />
                 </div>
 
+                @*Persona*@
+                <div class="form-group">
+                    <label for="persona_select">PERSONA:</label>
+                    <select id="persona_select" @bind="prestamo.personaId" class="form-control">
+                        <option value="" disabled selected>Elija una Persona</option>
+                        @foreach (var item in listaPersona)
+                        {
+                            <option value="@item.personaId">@item.nombre</option>
+                        }
+                    </select>
+                </div>
+
                 @*Concepto*@
                 <div class="form-group">
                     <label>CONCEPTO:</label>
@@ -79,6 +91,8 @@
     [Parameter]
     public int prestamosId { get; set; }
 
+    private List<Personas> listaPersona = new List<Personas>();
+
 
 
     protected override void OnInitialized()
@@ -92,6 +106,8 @@
             else
                 toast.ShowWarning("No encontrado.");
         }
+
+        listaPersona = PersonasBLL.GetList(p => true);
     }
 
     private void Buscar()
